@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding=utf8
+# -*- coding: utf-8 -*-
 
 import time
 import signal
@@ -13,6 +13,10 @@ from lib.filter import register_filters
 from lib.route import Route
 from lib.session import MemcacheSessionStore
 from handler import site, admin, ajax, oauth, shop, pay, user
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 define('cmd', default='runserver', metavar='runserver|syncdb')
 define('port', default=8080, type=int)
@@ -37,29 +41,29 @@ def syncdb():
     from lib.util import find_subclasses
     from model import db, User, Distribution, Category, Page
     
-    models = find_subclasses(db.Model)
-    for model in models:
-        if model.table_exists():
-            model.drop_table()
-        model.create_table()
-        logging.info('created table:%s' % model._meta.db_table)
+    #models = find_subclasses(db.Model)
+    #for model in models:
+    #    if model.table_exists():
+    #        model.drop_table()
+    #    model.create_table()
+    #    logging.info('created table:%s' % model._meta.db_table)
     
-    User.create(mobile = 'root', password = User.create_password('111111'), group = 9)
-    Distribution.create(name = '免费配送', price = 0)
-    Distribution.create(name = '上门自提', price = 0)
-    Category.create(name = '积分商品', slug = 'credit', order = 1)
-    Category.create(name = '搭配购买', slug = 'acc', order = 2)
-    Category.create(name = '慕斯蛋糕', slug = 'mousse', order = 3)
-    Category.create(name = '巧克力蛋糕', slug = 'chocolate', order = 4)
-    Category.create(name = '乳酪蛋糕', slug = 'cheese', order = 5)
-    Category.create(name = '乳脂奶油蛋糕', slug = 'creambutter', order = 6)
-    Category.create(name = '冰淇淋蛋糕', slug = 'icecream', order = 7)
-    Page.create(name = '吉米的厨房', slug = 'aboutus', content = '')
-    Page.create(name = '包装展示', slug = 'bzzs', content = '')
-    Page.create(name = '订购说明', slug = 'dgsm', content = '')
-    Page.create(name = '如何收货', slug = 'rhsh', content = '')
-    Page.create(name = '付款方式', slug = 'fkfs', content = '')
-    Page.create(name = '配送范围', slug = 'psfw', content = '')
+    #User.create(mobile = 'root', password = User.create_password('111111'), group = 9)
+    Distribution.create(name = u'免费配送', price = 0)
+    Distribution.create(name = u'上门自提', price = 0)
+    Category.create(name = u'积分商品', slug = 'credit', order = 1)
+    Category.create(name = u'搭配购买', slug = 'acc', order = 2)
+    Category.create(name = u'慕斯蛋糕', slug = 'mousse', order = 3)
+    Category.create(name = u'巧克力蛋糕', slug = 'chocolate', order = 4)
+    Category.create(name = u'乳酪蛋糕', slug = 'cheese', order = 5)
+    Category.create(name = u'乳脂奶油蛋糕', slug = 'creambutter', order = 6)
+    Category.create(name = u'冰淇淋蛋糕', slug = 'icecream', order = 7)
+    Page.create(name = u'吉米的厨房', slug = 'aboutus', content = '')
+    Page.create(name = u'包装展示', slug = 'bzzs', content = '')
+    Page.create(name = u'订购说明', slug = 'dgsm', content = '')
+    Page.create(name = u'如何收货', slug = 'rhsh', content = '')
+    Page.create(name = u'付款方式', slug = 'fkfs', content = '')
+    Page.create(name = u'配送范围', slug = 'psfw', content = '')
     
     logging.info('superuser - username:root password:111111')
 

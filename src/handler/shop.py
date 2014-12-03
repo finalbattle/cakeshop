@@ -265,7 +265,8 @@ class SettleHandler(BaseHandler):
                                     
                             sname = shopattr.name
                             
-                        body = body + shop.name + " " + sname + " " + str(orderitem['num']) + "个\n"
+                        #body = body + shop.name + " " + sname + " " + str(orderitem['num']) + "个\n"
+                        body = body + shop.name + " " + sname + " " + str(orderitem['num'])
                     except Exception, ex:
                         logging.error(ex)
                 
