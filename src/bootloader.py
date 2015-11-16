@@ -36,4 +36,4 @@ jinja_environment = Environment(
             autoescape = False)
 
 db = Db({'db':settings['db_name'], 'host':settings['db_host'], 'port':settings['db_port'], \
-               'user':settings['db_user'], 'passwd':settings['db_passwd'], 'charset':'utf8'})
+         'user':settings['db_user'], 'passwd':settings['db_passwd'], 'charset':'utf8', 'threadlocals':True})

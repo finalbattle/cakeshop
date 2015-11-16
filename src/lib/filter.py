@@ -2,6 +2,7 @@
 #coding=utf8
 
 import time
+import urllib
 
 def datetimeformat(value, fmt='%Y-%m-%d %H:%M:%S'):
     return time.strftime(fmt, time.localtime(value))
@@ -18,10 +19,14 @@ def truncate_words(s, num=50, end_text='...'):
 def null(value):
     return value if value else ""
 
+def quote(value):
+    return urllib.quote(value if value else "")
 
 def register_filters():
     filters ={}
     filters['truncate_words'] = truncate_words
     filters['datetimeformat'] = datetimeformat
     filters['null'] = null
+    filters['quote'] = quote
     return filters
+

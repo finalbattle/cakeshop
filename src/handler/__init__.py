@@ -5,9 +5,17 @@ import urllib
 from tornado.web import RequestHandler
 from lib.session import Session
 from lib.mixin import FlashMessagesMixin
+from bootloader import db
 from model import Category, Distribution
+import logging
+
+logger = logging.getLogger(__name__)
 
 class BaseHandler(RequestHandler, FlashMessagesMixin):
+
+    def on_finish(self):
+        db.close()
+        logger.info("==[close db]==")
     
     def set_default_headers(self):
         self.clear_header('Server')

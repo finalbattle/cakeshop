@@ -21,6 +21,8 @@
     <div class="headtel">免费配送 0519-81297639 </div>
     <div class="fr headinfo">
         <div id="userinfo" class="fr">
+        <!--a href="http://movie.freeseed.cc/auth?next=http://test.freeseed.cc" class="formforlogin">[auth登录认证]</a-->
+
         {% if user -%}<a>你好{{user.mobile}}</a><span class="fl">&nbsp;</span><a href="/signout">退出</a><a href="/order"  class="ico shopping">我的购物车</a><span class="fl">&nbsp;|&nbsp;</span><a href="/user">我的订单</a> {%if user.group == 9 -%}<span class="fl">&nbsp;|&nbsp;</span><a href="/admin">网站管理</a> {%endif %}
         {%-else-%}<a href="/signin" class="formforlogin">登录</a><span class="fl">&nbsp;|&nbsp;</span><a href="/signup"  class="formforregister">注册</a> <a href="/order"  class="ico shopping">我的购物车</a>{%-endif%}</div>
         <div id="global_search" class="fr"><form action="/list/" method="get"><input type="text" class="txt fl" name="keyword" ><input type="submit" value="搜索" class="but fr"></form></div>

@@ -19,7 +19,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 define('cmd', default='runserver', metavar='runserver|syncdb')
-define('port', default=8080, type=int)
+define('port', default=6060, type=int)
 
 class Application(tornado.web.Application):
     def __init__(self):
